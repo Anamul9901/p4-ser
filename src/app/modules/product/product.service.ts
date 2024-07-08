@@ -12,7 +12,6 @@ const getAllProductFromDB = async () => {
 };
 
 const getSingleFacilityFromDB = async (_id: string) => {
-    console.log(_id);
   const result = await Product.findOne({ _id });
   return result;
 };
