@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export type TProduct = {
   name: string;
   image: string;
@@ -5,5 +7,6 @@ export type TProduct = {
   price: number;
   quantity: number;
   category: string;
+  user: Types.ObjectId;
   isDeleted: boolean;
 };

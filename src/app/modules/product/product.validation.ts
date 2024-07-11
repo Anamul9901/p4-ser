@@ -8,6 +8,7 @@ const createProductValidationSchema = z.object({
     price: z.number().nonnegative(),
     quantity: z.number().nonnegative(),
     category: z.string(),
+    user: z.string().optional(),
     isDeleted: z.boolean(),
   }),
 });

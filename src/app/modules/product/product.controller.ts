@@ -38,7 +38,6 @@ const getSingleProduct = catchAsync(async (req, res) => {
 });
 
 const deleteProduct = catchAsync(async (req, res) => {
-  // const usreId = req?.user?.userId;
   const { id } = req.params;
   const result = await ProductService.deleteProductFromDB(id);
 

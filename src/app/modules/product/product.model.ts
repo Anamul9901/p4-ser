@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import { TProduct } from './product.interface';
 
 const productSchema = new mongoose.Schema<TProduct>({
@@ -24,6 +24,11 @@ const productSchema = new mongoose.Schema<TProduct>({
   category: {
     type: String,
     required: true,
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'User',
   },
   isDeleted: {
     type: Boolean,

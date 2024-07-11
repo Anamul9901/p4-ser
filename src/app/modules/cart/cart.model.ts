@@ -2,14 +2,15 @@ import mongoose, { Schema } from 'mongoose';
 import { TCart } from './cart.interface';
 
 const cartSchema = new mongoose.Schema<TCart>({
-  productInfo: {
+  productId: {
     type: Schema.Types.ObjectId,
     required: true,
     ref: 'Product',
   },
-  userEmail: {
-    type: String,
+  userId: {
+    type: Schema.Types.ObjectId,
     required: true,
+    ref: 'User'
   },
 });
 
