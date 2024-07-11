@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TProduct } from './product.interface';
 import { Product } from './product.model';
 
@@ -11,9 +12,20 @@ const getAllProductFromDB = async () => {
   return result;
 };
 
-const getSingleFacilityFromDB = async (_id: string) => {
+const getSingleProductFromDB = async (_id: string) => {
   const result = await Product.findOne({ _id });
   return result;
+};
+
+const updateProductFromDB = async (id: string, payload: TProduct) => {
+  const result = await Product.findByIdAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
+
+  const { name, image, title, price, quantity, category }: any = result;
+  const finalResult = { name, image, title, price, quantity, category };
+
+  return finalResult;
 };
 
 const deleteProductFromDB = async (id: string) => {
@@ -28,6 +40,7 @@ const deleteProductFromDB = async (id: string) => {
 export const ProductService = {
   createProductIntoDB,
   getAllProductFromDB,
-  getSingleFacilityFromDB,
-  deleteProductFromDB
+  getSingleProductFromDB,
+  deleteProductFromDB,
+  updateProductFromDB
 };

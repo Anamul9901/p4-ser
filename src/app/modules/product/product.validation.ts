@@ -13,6 +13,20 @@ const createProductValidationSchema = z.object({
   }),
 });
 
+const updateProductValidationSchema = z.object({
+  body: z
+    .object({
+      name: z.string().optional(),
+      image: z.string().optional(),
+      title: z.string().optional(),
+      price: z.number().nonnegative().optional(),
+      quantity: z.number().nonnegative().optional(),
+      category: z.string().optional(),
+    })
+    .optional(),
+});
+
 export const ProductValidation = {
   createProductValidationSchema,
+  updateProductValidationSchema
 };

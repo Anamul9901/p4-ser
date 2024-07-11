@@ -15,6 +15,12 @@ router.get('/', ProductControllers.getAllProduct);
 
 router.get('/:id', ProductControllers.getSingleProduct);
 
-router.delete('/:id', ProductControllers.deleteProduct);
+router.put('/:id', ProductControllers.updateProduct);
+
+router.delete(
+  '/:id',
+  validateRequest(ProductValidation.updateProductValidationSchema),
+  ProductControllers.deleteProduct
+);
 
 export const ProductRoutes = router;
