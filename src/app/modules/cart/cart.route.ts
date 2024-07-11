@@ -15,4 +15,6 @@ router.get('/', CartCollection.getAllCarts);
 
 router.get('/:id', CartCollection.getSingleCart);
 
+router.delete('/:id', CartCollection.deleteProduct);
+
 export const CartRoutes = router;
