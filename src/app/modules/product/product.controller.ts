@@ -2,7 +2,6 @@ import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { ProductService } from './product.service';
-import { JwtPayload } from 'jsonwebtoken';
 
 const createProduct = catchAsync(async (req, res) => {
   const result = await ProductService.createProductIntoDB(req.body);
@@ -38,8 +37,22 @@ const getSingleProduct = catchAsync(async (req, res) => {
   });
 });
 
+const deleteProduct = catchAsync(async (req, res) => {
+  // const usreId = req?.user?.userId;
+  const { id } = req.params;
+  const result = await ProductService.deleteProductFromDB(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Product deleted successfully',
+    data: result,
+  });
+});
+
 export const ProductControllers = {
   createProduct,
   getAllProduct,
   getSingleProduct,
+  deleteProduct,
 };

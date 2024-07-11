@@ -6,6 +6,9 @@ const productSchema = new mongoose.Schema<TProduct>({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+  },
   title: {
     type: String,
   },
@@ -16,6 +19,14 @@ const productSchema = new mongoose.Schema<TProduct>({
   quantity: {
     type: Number,
     required: true,
+  },
+  
+  category: {
+    type: String,
+    required: true,
+  },
+  isDeleted: {
+    type: Boolean,
   },
 });
 

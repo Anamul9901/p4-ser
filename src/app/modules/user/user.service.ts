@@ -11,16 +11,17 @@ const signUpUserIntoDB = async (payload: TUser) => {
 };
 
 const loginUser = async (payload: TLoginUser) => {
-    const isUserExists = await User.findOne({ email: payload?.email });
-    if (!isUserExists) {
-      throw new AppError(httpStatus.NOT_FOUND, 'Thsis user is not found !');
-    }
-    const {_id, email, password, role} = isUserExists;
-    const userData = {_id, email, password, role};
-    return userData;
+  console.log('user data--->', payload);
+  const isUserExists = await User.findOne({ email: payload?.email });
+  if (!isUserExists) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Thsis user is not found !');
+  }
+  const { _id, email, password, role } = isUserExists;
+  const userData = { _id, email, password, role };
+  return userData;
 };
 
 export const UserServices = {
   signUpUserIntoDB,
-  loginUser
+  loginUser,
 };
