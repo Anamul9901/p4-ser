@@ -4,10 +4,9 @@ import { PaymentService } from './pay.service';
 
 const createPaymentIntent = async (req: Request, res: Response) => {
   try {
-    const { amount, currency } = req.body;
+    const { amount } = req.body;
     const paymentIntent = await PaymentService.createPaymentIntent(
-      amount,
-      currency
+      amount
     );
     res.status(200).json(paymentIntent);
   } catch (error) {
