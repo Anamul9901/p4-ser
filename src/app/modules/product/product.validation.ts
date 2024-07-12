@@ -9,7 +9,6 @@ const createProductValidationSchema = z.object({
     quantity: z.number().nonnegative(),
     category: z.string(),
     user: z.string().optional(),
-    isDeleted: z.boolean(),
   }),
 });
 

@@ -8,5 +8,4 @@ export type TProduct = {
   quantity: number;
   category: string;
   user: Types.ObjectId;
-  isDeleted: boolean;
 };

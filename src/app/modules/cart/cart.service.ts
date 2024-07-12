@@ -17,6 +17,7 @@ const getSingleCartFromDB = async (_id: string) => {
 };
 
 const deleteCartFromDB = async (id: string) => {
+  console.log(id);
   const result = await Carts.findByIdAndDelete(id);
   return result;
 };

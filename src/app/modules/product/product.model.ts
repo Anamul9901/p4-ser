@@ -29,10 +29,7 @@ const productSchema = new mongoose.Schema<TProduct>({
     type: Schema.Types.ObjectId,
     required: true,
     ref: 'User',
-  },
-  isDeleted: {
-    type: Boolean,
-  },
+  }
 });
 
 export const Product = mongoose.model<TProduct>('Product', productSchema);

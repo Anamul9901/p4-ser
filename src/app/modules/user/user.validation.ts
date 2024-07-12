@@ -9,7 +9,6 @@ const signInValidationSchema = z.object({
         invalid_type_error: 'Password must be a string',
       })
       .max(20, { message: 'Password can not be more than 20 characters' }),
-    role: z.enum(['admin', 'user']),
   }),
 });
 
