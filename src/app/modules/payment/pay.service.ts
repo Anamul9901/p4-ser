@@ -32,8 +32,7 @@ const createPayment = async (paymentData: Payment) => {
     $in:  payment.cartId.map(id=>new Object(id))
   }}
   const deleteCart = await Carts.deleteMany(query);
-  console.log(deleteCart);
-  return payment
+  return ({payment, deleteCart})
 };
 
 const getPaymentById = async () => {
