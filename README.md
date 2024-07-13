@@ -1,4 +1,4 @@
-# Project Name: Sports Facility Booking Platform
+# Project Name: Tree Oasis
 
 This README file provides instructions for setting up and running the application locally.
 
