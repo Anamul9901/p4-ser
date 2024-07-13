@@ -71,7 +71,11 @@ const getAllProductFromDB = async (query: Record<string, unknown>) => {
 
   const fieldQuery = await limitQuery.select(fields);
 
-  return fieldQuery;
+  const alldata =await Product.find();
+  const productsLength = alldata.length;
+  console.log('alldata', alldata.length);
+
+  return {fieldQuery, productsLength};
 };
 
 const getSingleProductFromDB = async (_id: string) => {
