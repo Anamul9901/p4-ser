@@ -4,13 +4,13 @@ import { TProduct } from './product.interface';
 import { Product } from './product.model';
 
 const createProductIntoDB = async (payload: TProduct) => {
-  console.log(payload);
+  // console.log(payload);
   const result = await Product.create(payload);
   return result;
 };
 
 const getAllProductFromDB = async (query: Record<string, unknown>) => {
-  console.log('base query:', query);
+  // console.log('base query:', query);
   const queryObject = { ...query }; // query k copy kore queryObject e bosalam
   // {email: { $regex : query.searchTerm, $options: i}}
   // {presentAddress: { $regex : query.searchTerm, $options: i}}

@@ -1,0 +1,16 @@
+import { z } from 'zod';
+
+const buyUserInfoValidationSchema = z.object({
+  body: z.object({
+    name: z.string(),
+    email: z.string().email(),
+    location: z.string(),
+    number: z.string(),
+    paymentType: z.string(),
+    totalPrice: z.number(),
+  }),
+});
+
+export const buyUserValidation = {
+    buyUserInfoValidationSchema,
+};
