@@ -15,7 +15,7 @@ const createBuInfo = catchAsync(async (req, res) => {
 });
 
 const getAllBuyInfo = catchAsync(async (req, res) => {
-  const result = await BuyInfoService.getAllBuyInfoFromDB();
+  const result = await BuyInfoService.getAllBuyInfoFromDB(req?.query);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,

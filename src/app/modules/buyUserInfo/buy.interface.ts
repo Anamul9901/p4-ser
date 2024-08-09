@@ -4,5 +4,5 @@ export interface TBuyInfo {
   location: string;
   number: string;
   paymentType: string;
-  totalPrice: number
+  totalPrice: number;
 }

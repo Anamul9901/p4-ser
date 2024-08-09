@@ -9,6 +9,7 @@ const createProductValidationSchema = z.object({
     quantity: z.number().nonnegative(),
     category: z.string(),
     user: z.string().optional(),
+    rating: z.number().nonnegative(),
   }),
 });
 
@@ -21,11 +22,12 @@ const updateProductValidationSchema = z.object({
       price: z.number().nonnegative().optional(),
       quantity: z.number().nonnegative().optional(),
       category: z.string().optional(),
+      rating: z.number().nonnegative().optional(),
     })
     .optional(),
 });
 
 export const ProductValidation = {
   createProductValidationSchema,
-  updateProductValidationSchema
+  updateProductValidationSchema,
 };

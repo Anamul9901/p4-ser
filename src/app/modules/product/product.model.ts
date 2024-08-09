@@ -20,16 +20,20 @@ const productSchema = new mongoose.Schema<TProduct>({
     type: Number,
     required: true,
   },
-  
+
   category: {
     type: String,
+    required: true,
+  },
+  rating: {
+    type: Number,
     required: true,
   },
   user: {
     type: Schema.Types.ObjectId,
     required: true,
     ref: 'User',
-  }
+  },
 });
 
 export const Product = mongoose.model<TProduct>('Product', productSchema);

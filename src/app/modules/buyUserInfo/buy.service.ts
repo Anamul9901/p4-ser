@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TBuyInfo } from './buy.interface';
 import { BuyInfo } from './buy.model';
 
@@ -6,8 +7,8 @@ const createBuyInfoIntoDB = async (payload: TBuyInfo) => {
   return result;
 };
 
-const getAllBuyInfoFromDB = async () => {
-  const result = await BuyInfo.find();
+const getAllBuyInfoFromDB = async (email: any) => {
+  const result = await BuyInfo.find(email);
   return result;
 };
 

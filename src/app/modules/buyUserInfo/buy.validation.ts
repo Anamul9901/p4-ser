@@ -12,5 +12,5 @@ const buyUserInfoValidationSchema = z.object({
 });
 
 export const buyUserValidation = {
-    buyUserInfoValidationSchema,
+  buyUserInfoValidationSchema,
 };

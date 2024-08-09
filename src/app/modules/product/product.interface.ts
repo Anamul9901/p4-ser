@@ -8,4 +8,5 @@ export type TProduct = {
   quantity: number;
   category: string;
   user: Types.ObjectId;
+  rating: number;
 };
