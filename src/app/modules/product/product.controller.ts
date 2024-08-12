@@ -37,9 +37,8 @@ const getSingleProduct = catchAsync(async (req, res) => {
   });
 });
 
-const updateProduct = catchAsync(async (req, res)=>{
-  const {id} = req.params;
-  console.log('controller---', req.body);
+const updateProduct = catchAsync(async (req, res) => {
+  const { id } = req.params;
   const result = await ProductService.updateProductFromDB(id, req.body);
 
   sendResponse(res, {
@@ -48,7 +47,20 @@ const updateProduct = catchAsync(async (req, res)=>{
     message: 'Product updated successfully',
     data: result,
   });
-})
+});
+
+const updateMultipleProductQuantity = catchAsync(async (req, res) => {
+  const updates = req.body; // Assuming req.body is an array of { _id, price }
+
+  const result = await ProductService.updateMultipleProductQuanity(updates);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Products updated successfully',
+    data: result,
+  });
+});
 
 const deleteProduct = catchAsync(async (req, res) => {
   const { id } = req.params;
@@ -67,5 +79,6 @@ export const ProductControllers = {
   getAllProduct,
   getSingleProduct,
   deleteProduct,
-  updateProduct
+  updateProduct,
+  updateMultipleProductQuantity,
 };

@@ -26,6 +26,10 @@ const buyInfoSchema = new Schema<TBuyInfo>({
     type: Number,
     required: true,
   },
+  transactionId: {
+    type: String,
+    required: true,
+  },
 });
 
 export const BuyInfo = model<TBuyInfo>('BuyInfo', buyInfoSchema);

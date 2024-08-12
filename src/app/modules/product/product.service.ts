@@ -4,13 +4,11 @@ import { TProduct } from './product.interface';
 import { Product } from './product.model';
 
 const createProductIntoDB = async (payload: TProduct) => {
-  // console.log(payload);
   const result = await Product.create(payload);
   return result;
 };
 
 const getAllProductFromDB = async (query: Record<string, unknown>) => {
-  // console.log('base query:', query);
   const queryObject = { ...query }; // query k copy kore queryObject e bosalam
   // {email: { $regex : query.searchTerm, $options: i}}
   // {presentAddress: { $regex : query.searchTerm, $options: i}}
@@ -31,9 +29,7 @@ const getAllProductFromDB = async (query: Record<string, unknown>) => {
   //Filtering
   const exludeFields = ['searchTerm', 'sort', 'limit', 'page', 'fields'];
   exludeFields.forEach((el) => delete queryObject[el]);
-  console.log('queryObject', queryObject);
-  const filterQuery = searchQuery
-    .find(queryObject)
+  const filterQuery = searchQuery.find(queryObject);
 
   let sort = '-createdAt';
   if (query.sort) {
@@ -66,16 +62,14 @@ const getAllProductFromDB = async (query: Record<string, unknown>) => {
   // fields: 'name enail';
   if (query.fields) {
     fields = (query.fields as string).split(',').join(' ');
-    console.log({ fields });
   }
 
   const fieldQuery = await limitQuery.select(fields);
 
-  const alldata =await Product.find();
+  const alldata = await Product.find();
   const productsLength = alldata.length;
-  console.log('alldata', alldata.length);
 
-  return {fieldQuery, productsLength};
+  return { fieldQuery, productsLength };
 };
 
 const getSingleProductFromDB = async (_id: string) => {
@@ -84,7 +78,7 @@ const getSingleProductFromDB = async (_id: string) => {
 };
 
 // const updateProductFromDB = async (id: string, payload: TProduct) => {
-//   console.log('update data=>', payload);
+
 //   const result = await Product.findByIdAndUpdate({ _id: id }, payload, {
 //     new: true,
 //     runValidators: true,
@@ -96,8 +90,6 @@ const getSingleProductFromDB = async (_id: string) => {
 //   return finalResult;
 // };
 const updateProductFromDB = async (id: string, payload: TProduct) => {
-  console.log('update data=>', payload);
-
   // Filter out null or empty string values
   const filteredPayload = Object.fromEntries(
     Object.entries(payload).filter(
@@ -120,6 +112,24 @@ const updateProductFromDB = async (id: string, payload: TProduct) => {
   return finalResult;
 };
 
+const updateMultipleProductQuanity = async (
+  updates: { _id: string; quantity: number }[]
+) => {
+  const bulkOperations = updates.map((update) => ({
+    updateOne: {
+      filter: { _id: update._id },
+      update: { $set: { quantity: update.quantity } },
+    },
+  }));
+
+  const result = await Product.bulkWrite(bulkOperations);
+
+  // if (result.modifiedCount === 0) {
+  //   throw new Error('No products were updated');
+  // }
+  return result;
+};
+
 const deleteProductFromDB = async (id: string) => {
   const result = await Product.findByIdAndDelete(id);
   return result;
@@ -131,4 +141,5 @@ export const ProductService = {
   getSingleProductFromDB,
   deleteProductFromDB,
   updateProductFromDB,
+  updateMultipleProductQuanity,
 };

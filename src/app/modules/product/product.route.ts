@@ -17,6 +17,8 @@ router.get('/:id', ProductControllers.getSingleProduct);
 
 router.put('/:id', ProductControllers.updateProduct);
 
+router.patch('/quantity', ProductControllers.updateMultipleProductQuantity);
+
 router.delete(
   '/:id',
   validateRequest(ProductValidation.updateProductValidationSchema),
