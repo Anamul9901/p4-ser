@@ -8,7 +8,7 @@ const buyUserInfoValidationSchema = z.object({
     number: z.string(),
     paymentType: z.string(),
     totalPrice: z.number(),
-    transactionId: z.string(),
+    transactionId: z.string().optional(),
   }),
 });
 

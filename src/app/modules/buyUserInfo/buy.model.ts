@@ -28,7 +28,7 @@ const buyInfoSchema = new Schema<TBuyInfo>({
   },
   transactionId: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 

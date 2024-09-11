@@ -1,7 +1,7 @@
 export interface PaymentIntentData {
     amount: number;
   }
-  
+
 
 
 export interface Payment {

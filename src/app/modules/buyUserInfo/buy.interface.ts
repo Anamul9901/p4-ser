@@ -5,5 +5,5 @@ export interface TBuyInfo {
   number: string;
   paymentType: string;
   totalPrice: number;
-  transactionId: string;
+  transactionId?: string;
 }
